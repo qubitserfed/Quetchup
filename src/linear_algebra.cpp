@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
+#include <stdexcept>
 #include <cassert>
 
 #include "linear_algebra.hpp"
@@ -9,7 +9,9 @@
 using u64 = unsigned long long;
 
 void my_assert(bool arg) {
-    assert(arg);
+    if (!arg) {
+        throw std::runtime_error("Internal assertion error");
+    }
 }
 
 int popcount(u64 num) {

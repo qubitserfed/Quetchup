@@ -590,6 +590,8 @@ bool brute_test_suite() {
 
 
 int main() {
+    std::cout << "Tarkan Kiss Kiss" << std::endl;
+
     brute_test_suite();
 //    std::cout << clifford_group_size(2) << std::endl;
 
