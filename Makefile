@@ -32,14 +32,16 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 OBJ_FILES_NO_INTERFACE_NO_TEST := $(filter-out $(BUILD_DIR)/interface.o $(BUILD_DIR)/testing.o, $(OBJ_FILES))
+# Core objects exclude interface.o, testing.o, and python_module.o (pybind11 bindings)
+OBJ_FILES_CORE := $(filter-out $(BUILD_DIR)/interface.o $(BUILD_DIR)/testing.o $(BUILD_DIR)/python_module.o, $(OBJ_FILES))
 
-# Compile interface.cpp into an executable, linking with all object files except testing.o
-interface: $(BUILD_DIR)/interface.o $(OBJ_FILES_NO_INTERFACE)
-	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/interface $(BUILD_DIR)/interface.o $(OBJ_FILES_NO_INTERFACE_NO_TEST)
+# Compile interface.cpp into an executable, linking only core objects (no pybind11)
+interface: $(BUILD_DIR)/interface.o $(OBJ_FILES_CORE)
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/interface $(BUILD_DIR)/interface.o $(OBJ_FILES_CORE)
 
-# Compile testing.cpp into an executable, linking with all object files except interface.o
-testing: $(BUILD_DIR)/testing.o $(OBJ_FILES_NO_testing)
-	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/testing $(BUILD_DIR)/testing.o $(OBJ_FILES_NO_INTERFACE_NO_TEST)
+# Compile testing.cpp into an executable, linking only core objects (no pybind11)
+testing: $(BUILD_DIR)/testing.o $(OBJ_FILES_CORE)
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/testing $(BUILD_DIR)/testing.o $(OBJ_FILES_CORE)
 
 # Clean build directory
 clean:

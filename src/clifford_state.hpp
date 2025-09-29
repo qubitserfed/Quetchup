@@ -25,8 +25,7 @@ struct StabState {
         this->b = BVector(n);
     }
 
-    StabState() {
-        StabState(0);
+    StabState() : StabState(0) {
     }
 
     BMatrix A;

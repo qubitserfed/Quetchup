@@ -139,17 +139,17 @@ PYBIND11_MODULE(Extension, module) {
         .def("__latex_rep", [&](StabState self) -> std::string {
             return to_latex(self);
         })
-        .def("zero_prep", [&](StabState &self) -> StabState {
+        .def("prep_zero", [&](StabState &self) -> StabState {
             push_qubit(self);
             return self;
         })
-        .def("zero_prep", [&](StabState &self, int pos) -> StabState {
+        .def("prep_zero", [&](StabState &self, int pos) -> StabState {
             push_qubit(self);
             for (int i = self.n - 1; i > pos; --i)
                 apply_swap(self, i, i - 1);
             return self;
         })
-        .def("zero_postselect", [&](StabState &self, int pos) -> StabState {
+        .def("post_zero", [&](StabState &self, int pos) -> StabState {
             for (int i = pos; i < self.n - 1; ++i)
                 apply_swap(self, i, i + 1);
             pop_qubit(self);
