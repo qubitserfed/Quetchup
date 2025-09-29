@@ -9,7 +9,7 @@ ALL_SOURCE_FILES = [f for f in glob.glob("src/*.cpp") if not any(x in f for x in
 
 ext_modules = [
     Extension(
-        "Quetchup.Extension",qubo
+        "Quetchup.Extension",
         sources=ALL_SOURCE_FILES,
         include_dirs=[pybind11.get_include(), "src"],
         language="c++",
