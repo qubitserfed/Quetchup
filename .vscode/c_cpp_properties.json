@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/.venv/lib/python3.13/site-packages/pybind11/include/pybind11/",
+                "${workspaceFolder}/.venv/lib/python3.13/site-packages/pybind11/include/",
+                "${workspaceFolder}/.venv/include/python3.13/",
+                "${workspaceFolder}/.venv/include/",
+                "/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+//                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "macos-clang-arm64",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "compilerArgs": []
+        }
+    ],
+    "version": 4
+}

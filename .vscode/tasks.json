@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "compile",
+        "command": "python3", // Could be any other shell command
+        "args": ["compile.py", "dev"],
+        "type": "shell"
+    }
+]
+}
